@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+        <title>Productos</title>
+        </head>
+        <body>
+        <h1>Titulo de la pagina</h1>
+ 
+        <ul id="navigation">
+            {% for product in products %}
+                <li><a href="{{ product.id }}">{{ product.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+parameters:
+#    diego_user.example.class: Diego\UserBundle\Example
+
+services:
+#    diego_user.example:
+#        class: %diego_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,0 +1,30 @@
+diego_store_create:
+    path:     /store
+    defaults: { _controller: DiegoStoreBundle:Default:create }
+    
+diego_store_delete:
+    path:     /store/delete/{id}
+    defaults: { _controller: DiegoStoreBundle:Default:delete }   
+    requirements:
+        id:  \d+
+        
+diego_store_show_by:
+    path:     /store/{name}/{description}
+    defaults: { _controller: DiegoStoreBundle:Default:show }    
+    
+diego_store_edit:
+    path:     /store/edit/{id}/{name}
+    defaults: { _controller: DiegoStoreBundle:Default:update }    
+
+
+diego_store_retrieve:
+    path:     /store/retrieve
+    defaults: { _controller: DiegoStoreBundle:Default:retrieve }   
+    
+diego_store_create_product:
+    path:     /store/createProduct
+    defaults: { _controller: DiegoStoreBundle:Default:createProduct }     
+    
+diego_store_email:
+    path:     /store/email/add/{email}
+    defaults: { _controller: DiegoStoreBundle:Default:addEmail}         

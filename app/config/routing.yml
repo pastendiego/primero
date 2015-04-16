@@ -1,0 +1,19 @@
+diego_user:
+    resource: "@DiegoUserBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+diego_security:
+    resource: "@DiegoSecurityBundle/Resources/config/routing.yml"
+    prefix:   /
+
+diego_store:
+    resource: "@DiegoStoreBundle/Resources/config/routing.yml"
+    prefix:   /admin
+    
+    
+login:
+    pattern:   /login
+    defaults:  { _controller: DiegoSecurityBundle:Security:login }
+login_check:
+    pattern:   /login_check        
+
