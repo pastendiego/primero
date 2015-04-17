@@ -1,4 +1,14 @@
-services:
+
 #    diego_store.example:
 #        class: Diego\StoreBundle\Example
 #        arguments: [@service_id, "plain_value", %parameter%]
+
+
+parameters:
+    my_mailer.class:      Diego\StoreBundle\Mailer
+    my_mailer.transport:  sendmail
+
+services:
+    my_mailer:
+        class:        "%my_mailer.class%"
+        arguments:    ["%my_mailer.transport%"]

@@ -4,7 +4,7 @@ diego_user:
     
 diego_security:
     resource: "@DiegoSecurityBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /swadmin
 
 diego_store:
     resource: "@DiegoStoreBundle/Resources/config/routing.yml"
@@ -17,3 +17,5 @@ login:
 login_check:
     pattern:   /login_check        
 
+logout:
+    path:   /logout

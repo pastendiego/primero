@@ -8,6 +8,7 @@ use Diego\StoreBundle\Entity\Product;
 use Diego\StoreBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 class DefaultController extends Controller
 {
@@ -113,11 +114,25 @@ class DefaultController extends Controller
         public function retrieveAction()
         {
             
+            if (false === $this->get('security.context')->isGranted('ROLE_ADMIN')) {
+                throw new AccessDeniedException('Mal loco');
+            }
+            
             $em = $this->getDoctrine()->getManager();
             $products = $em->getRepository('DiegoStoreBundle:Product')
                ->findAllOrderedByName();
+            
+            $translated = $this->get('translator')->trans('Symfony2 is great');
+            
+           // $factory = $this->get('security.encoder_factory');
+           // $user = new Diego\UserBundle\Entity\User();
 
-            return $this->render('DiegoStoreBundle:Store:list.html.twig', array('products' => $products));
+          //  $encoder = $factory->getEncoder($user);
+          //  $password = $encoder->encodePassword ('ryanpass', $user->getSalt());
+          //  $user->setPassword($password);
+            
+
+            return $this->render('DiegoStoreBundle:Store:list.html.twig', array('products' => $products,'translated' => $translated));
         }
         
         public function createProductAction()

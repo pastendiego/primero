@@ -6,9 +6,13 @@ security:
             form_login:
                 login_path:  login
                 check_path:  login_check
+            logout:
+                target: /
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/supadmin, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/swadmin, roles: ROLE_ALLOWED_TO_SWITCH }
         # Descomenta la siguiente línea para proteger también
         # la propia URL /admin
         # - { path: ^/admin$, roles: ROLE_ADMIN }
@@ -22,12 +26,23 @@ security:
                     ryan:
                         password: $2a$12$w/aHvnC/XNeDVrrl65b3dept8QcKqpADxUlbraVXXsC03Jam5hvoO
                         roles: 'ROLE_USER'
+                    diego:
+                        password: $2a$12$HmOsqRDJK0HuMDQ5Fb2.AOLMQHyNHGD0seyjU3lEVusjT72QQEIpW
+                        roles: 'ROLE_ALLOWED_TO_SWITCH'
                     admin:
                         password: $2a$12$HmOsqRDJK0HuMDQ5Fb2.AOLMQHyNHGD0seyjU3lEVusjT72QQEIpW
                         roles: 'ROLE_ADMIN'
+
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]                   
+
 
     encoders:
         #Symfony\Component\Security\Core\User\User: plaintext
         Symfony\Component\Security\Core\User\User:
             algorithm: bcrypt
             cost:      12
+            
+    
